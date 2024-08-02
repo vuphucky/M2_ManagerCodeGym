@@ -19,17 +19,17 @@ public class StudentService implements IStudentService{
     }
 
     @Override
-    public Student findStudent(String id) {
+    public Student findStudent(int id) {
         return iStudentRepo.findStudent(id);
     }
 
     @Override
-    public void updateStudent(String id, Student student) {
+    public void updateStudent(int id, Student student) {
        iStudentRepo.updateStudent(id,student);
     }
 
     @Override
-    public void removeStudent(String id) {
+    public void removeStudent(int id) {
          iStudentRepo.removeStudent(id);
     }
 }

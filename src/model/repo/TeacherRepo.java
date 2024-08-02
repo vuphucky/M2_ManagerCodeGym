@@ -1,6 +1,7 @@
 package model.repo;
 
 import model.Teacher;
+import storage.IOTeacherStream;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,8 +12,8 @@ public class TeacherRepo implements IsTeacherRepo {
 
     static {
         listTeacher = new ArrayList<>();
-        Teacher t1 = new Teacher("T01", "Luan Phan", "luanphan@codegym","0912345687", 29,"Tutor");
-        Teacher t2 = new Teacher("T02","Kieu Anh", "kieuanh@codegym", "098123654",30, "Tutor");
+        Teacher t1 = new Teacher(1, "Luan Phan", "luanphan@codegym","0912345687", 29,"Tutor");
+        Teacher t2 = new Teacher(2,"Kieu Anh", "kieuanh@codegym", "098123654",30, "Tutor");
         listTeacher.add(t1);
         listTeacher.add(t2);
     }
@@ -20,17 +21,18 @@ public class TeacherRepo implements IsTeacherRepo {
     @Override
     public List<Teacher> findAll() {
 
-        return listTeacher;
+        return IOTeacherStream.readFromFile();
     }
 
     @Override
     public void add(Teacher teacher) {
 
-        listTeacher.add(teacher);
+        IOTeacherStream.writeTeacherToFile(teacher);
+        System.out.println("them moi thanh cong: " + teacher);
     }
 
     @Override
-    public Teacher findTeacher(String id) {
+    public Teacher findTeacher(int id) {
         for (Teacher t: listTeacher){
             if(t.getId() == id){
                 return t;
@@ -40,7 +42,7 @@ public class TeacherRepo implements IsTeacherRepo {
     }
 
     @Override
-    public void updateTeacher(String id, Teacher teacher) {
+    public void updateTeacher(int id, Teacher teacher) {
       Teacher t = findTeacher(id);
       t.setName(teacher.getName());
       t.setEmail(teacher.getEmail());
@@ -51,13 +53,8 @@ public class TeacherRepo implements IsTeacherRepo {
     }
 
     @Override
-    public void removeTeacher(String id) {
-        for (Teacher t:listTeacher){
-            if (t.getId() == id){
-                listTeacher.remove(t);
+    public void removeTeacher(int id) {
+       listTeacher.removeIf(teacher -> teacher.getId() == id);
                 System.out.println("Xoa giang vien thanh cong");
             }
-        }
-
-    }
 }

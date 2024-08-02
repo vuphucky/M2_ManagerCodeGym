@@ -7,7 +7,7 @@ import java.util.List;
 public interface IStudentRepo {
     List<Student> findAll();
     void add(Student student);
-    Student findStudent(String id);
-    void updateStudent(String id, Student student);
-    void removeStudent(String id);
+    Student findStudent(int id);
+    void updateStudent(int id, Student student);
+    void removeStudent(int id);
 }

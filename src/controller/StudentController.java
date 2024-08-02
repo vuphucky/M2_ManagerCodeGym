@@ -4,7 +4,6 @@ import model.Student;
 import model.service.student_serviec.IStudentService;
 import model.service.student_serviec.StudentService;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -54,7 +53,8 @@ public class StudentController {
         public void addStudent() {
 //        String name, String email, String phoneNumber, LocalDate birthday, String className
             System.out.println("Nhap id hoc vien:");
-            String id = scanner.nextLine();
+            int id = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Nhap ten hoc vien:");
             String name = scanner.nextLine();
             System.out.println("Nhap email hoc sinh:");
@@ -74,7 +74,8 @@ public class StudentController {
 
         public void updateStudent() {
             System.out.println("Nhap id hoc vien can sua: ");
-            String id = scanner.nextLine();
+            int id = scanner.nextInt();
+            scanner.nextLine();
             Student student = iStudentService.findStudent(id);
             if (student == null) {
                 System.out.println("Id nay khong ton tai");
@@ -92,14 +93,16 @@ public class StudentController {
                 System.out.println("Nhap lop hoc moi vien:");
                 String className = scanner.nextLine();
 
-                Student st = new Student(id, name, email, phoneNumber, age, className);
-                iStudentService.updateStudent(id, student);
+                Student updateStudent = new Student(id, name, email, phoneNumber, age, className);
+                iStudentService.updateStudent(id, updateStudent);
             }
         }
         public void removeStudent(){
             System.out.println("Nhap id hoc vien can xoa: ");
-            String id = scanner.nextLine();
+            int id = scanner.nextInt();
+            scanner.nextLine();
             iStudentService.removeStudent(id);
         }
+
     }
 

@@ -3,13 +3,13 @@ package model;
 import java.time.LocalDate;
 
 public abstract class Person {
-    private String id;
+    private int id;
     private String name;
     private String email;
     private String phoneNumber;
     private int age;
 
-    public Person(String id,String name, String email, String phoneNumber, int age){
+    public Person(int id,String name, String email, String phoneNumber, int age){
         this.id = id;
         this.name = name;
         this.age = age;
@@ -17,11 +17,11 @@ public abstract class Person {
         this. phoneNumber = phoneNumber;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

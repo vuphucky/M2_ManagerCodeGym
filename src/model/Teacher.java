@@ -13,9 +13,14 @@ public class Teacher extends Person  {
         this.level = level;
     }
 
-    public Teacher(String id,String name, String email, String phoneNumber, int age, String level) {
+    public Teacher(int id,String name, String email, String phoneNumber, int age, String level) {
         super(id,name, email, phoneNumber, age);
         this.level = level;
+    }
+
+    public String convertToLine(){
+        return super.getId() + "," + super.getName() + "," + super.getEmail() + "," + super.getPhoneNumber()
+                + "," + super.getAge() + "," + level;
     }
 
     @Override

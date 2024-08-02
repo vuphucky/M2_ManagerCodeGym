@@ -18,17 +18,17 @@ public class TeacherService implements ISTeacherSevice {
     }
 
     @Override
-    public Teacher findTeacher(String id) {
+    public Teacher findTeacher(int id) {
         return isTeacherRepo.findTeacher(id);
     }
 
     @Override
-    public void updateTeacher(String id, Teacher teacher) {
+    public void updateTeacher(int id, Teacher teacher) {
         isTeacherRepo.updateTeacher(id, teacher);
     }
 
     @Override
-    public void removeTeacher(String id) {
+    public void removeTeacher(int id) {
           isTeacherRepo.removeTeacher(id);
     }
 }
